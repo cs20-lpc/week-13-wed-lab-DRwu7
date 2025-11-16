@@ -1,16 +1,71 @@
 template <typename T>
 void ArrayList<T>::bubbleSort() {
-    // TODO
+    int n = this->length;
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - 1 - i; j++) {
+            numComps++;
+            
+            if (buffer[j] > buffer[j + 1]) {
+                swap(j, j + 1);
+                numSwaps++;
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
 }
 
 template <typename T>
 void ArrayList<T>::insertionSort() {
-    // TODO
+    int n = this->length;
+    for (int i = 1; i < n; i++) {
+        T key = buffer[i];
+        int j = i - 1;
+
+        // Move elements of buffer[0..i-1], that are greater than key,
+        while (j >= 0) {
+            numComps++;
+            
+            if (buffer[j] > key) {
+                buffer[j + 1] = buffer[j];
+                numSwaps++;
+                j--;
+            } else {
+                break;
+            }
+        }
+        if (j == -1) {
+        } else {
+        }
+        
+        buffer[j + 1] = key;
+    }
 }
 
 template <typename T>
 void ArrayList<T>::selectionSort() {
-    // TODO
+    int n = this->length;
+    for (int i = 0; i < n - 1; i++) {
+        // Find the minimum element in unsorted array buffer[i..n-1]
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) {
+            // Increment comparison count
+            numComps++;
+            
+            if (buffer[j] < buffer[min_idx]) {
+                min_idx = j;
+            }
+        }
+        
+        // Swap the found minimum element with the first element
+        if (min_idx != i) {
+            swap(min_idx, i);
+            numSwaps++;
+        }
+    }
 }
 
 /*******************************************************************************
